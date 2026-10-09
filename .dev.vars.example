@@ -1,0 +1,4 @@
+# Bootstrap only: generate a local owner credential with bun run token.
+# Legacy tokens stop working for mail access after the first Passkey is enrolled.
+# The server stores SHA-256 digests, never the plaintext access tokens.
+AUTH_TOKENS=[]

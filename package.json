@@ -1,0 +1,38 @@
+{
+  "name": "postlet",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --config wrangler.jsonc",
+    "build": "wrangler deploy --config wrangler.jsonc --dry-run --outdir dist",
+    "check": "biome check . && bun run check:types",
+    "check:types": "bun scripts/check-types.js",
+    "format": "biome check --write .",
+    "test": "bun test tests/unit",
+    "benchmark": "bun scripts/benchmark.js",
+    "maintenance": "bun scripts/maintenance.js",
+    "test:integration": "bun run build && vitest run",
+    "types": "wrangler types --config wrangler.jsonc",
+    "deploy": "bun scripts/deploy.js",
+    "test:browser:install": "playwright-core install chromium",
+    "token": "bun scripts/token.js"
+  },
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "1.2.3",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@simplewebauthn/browser": "14.0.0",
+    "@simplewebauthn/server": "14.0.3",
+    "postal-mime": "4.0.5",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@cloudflare/workers-types": "5.20261009.1",
+    "miniflare": "5.20261006.1-alpha",
+    "playwright-core": "1.64.0",
+    "vitest": "5.0.3",
+    "wrangler": "4.149.0"
+  }
+}

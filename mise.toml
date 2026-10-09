@@ -1,0 +1,27 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[settings]
+lockfile = true
+
+[settings.npm]
+package_manager = "bun"
+
+[tools]
+bun = "latest"
+node = "24"
+wrangler = "latest"
+biome = "latest"
+"npm:google-closure-compiler" = "latest"
+
+[tasks.dev]
+run = "bun run dev"
+
+[tasks.check]
+run = "bun run check && bun run test && bun run test:integration"
+
+[tasks.deploy]
+depends = ["check"]
+run = "bun run deploy"
+
+[tasks.backup]
+run = "bun scripts/backup.js"

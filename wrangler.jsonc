@@ -1,0 +1,73 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "postlet-dev",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-09",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "rules": [
+    {
+      "type": "Text",
+      "globs": ["**/*.umd.min.js", "**/*.browser.js", "**/*.css"],
+      "fallthrough": true
+    }
+  ],
+  "workers_dev": false,
+  "preview_urls": false,
+  "vars": {
+    "ACCOUNT_ID": "personal",
+    "MAIL_DOMAIN": "example.test",
+    "MAIL_ADDRESS": "root@example.test",
+    "MAIL_NAME": "Postlet",
+    "SEND_ENABLED": "false",
+    "PUBLIC_URL": "https://localhost:8787",
+    "MAX_MESSAGE_BYTES": "10485760",
+    "BLOB_GC_ENABLED": "false",
+    "BLOB_RETENTION_DAYS": "30",
+    "HISTORY_RETENTION_DAYS": "90"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "ACCOUNT",
+        "class_name": "MailAccount"
+      },
+      {
+        "name": "AUTH",
+        "class_name": "AuthState"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["MailAccount"]
+    },
+    {
+      "tag": "v2",
+      "new_sqlite_classes": ["AuthState"]
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MAIL",
+      "bucket_name": "postlet-mail-dev"
+    }
+  ],
+  "send_email": [
+    {
+      "name": "OUTBOUND"
+    }
+  ],
+  "triggers": {
+    "crons": ["17 * * * *"]
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "dev": {
+    "ip": "localhost",
+    "port": 8787,
+    "local_protocol": "https"
+  }
+}

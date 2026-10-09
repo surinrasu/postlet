@@ -1,0 +1,112 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
+body {
+  max-inline-size: 42rem;
+  margin: auto;
+  padding: 1.25rem;
+  color: CanvasText;
+  background: Canvas;
+}
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block-end: 2rem;
+}
+.language {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+h1 {
+  font-size: 1.6rem;
+}
+h2 {
+  font-size: 1.2rem;
+  margin-block-start: 2rem;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  max-inline-size: 100%;
+  box-sizing: border-box;
+}
+button,
+input:not([type="checkbox"]),
+select {
+  min-block-size: 2.75rem;
+  padding: 0.4rem 0.7rem;
+}
+button {
+  cursor: pointer;
+  margin: 0.25rem 0.35rem 0.25rem 0;
+}
+input[type="text"],
+input[type="password"] {
+  display: block;
+  inline-size: 100%;
+}
+label {
+  display: block;
+  margin-block: 0.75rem;
+}
+.language label {
+  margin: 0;
+}
+input[type="checkbox"] {
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  vertical-align: middle;
+  margin-inline-end: 0.4rem;
+}
+fieldset {
+  border: 1px solid GrayText;
+  padding: 0.75rem;
+}
+li {
+  margin-block: 1rem;
+  overflow-wrap: anywhere;
+}
+li span {
+  display: block;
+}
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  border: 1px solid GrayText;
+  padding: 1rem;
+}
+a {
+  color: LinkText;
+}
+#message {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+strong {
+  overflow-wrap: anywhere;
+}
+:focus-visible {
+  outline: 2px solid Highlight;
+  outline-offset: 3px;
+}
+[hidden] {
+  /* biome-ignore lint/complexity/noImportantStyles: Hidden auth sections must override all layout display rules. */
+  display: none !important;
+}
+@media (max-width: 30rem) {
+  body {
+    padding: 1rem;
+  }
+  .language {
+    inline-size: 100%;
+  }
+}
